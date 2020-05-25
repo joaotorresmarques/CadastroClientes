@@ -1,0 +1,53 @@
+<%- include ("../partials/header.ejs") %>
+<%- include ("../partials/homenavbar.ejs") %>
+<body>
+    <div class="container">
+        <% if (success_msg.length > 0){ %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 25px;">
+                <%= success_msg %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <% } %>
+
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h3>Criar Plano </h3>
+            </div>
+            <div class="card-body">
+               <a href="/admin/plans/create" class="btn btn-success">Novo Plano</a>
+            </div>
+        </div>    
+        <hr>
+        <div class="card" style="margin-bottom: 30px;"> 
+            <div class="card-header">
+                <h3>Lista de Planos</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                    </thead>
+
+                    <tbody>
+                        <% plans.forEach(plan => { %>
+                            <tr>
+                                <td><%= plan.id %> </td>
+                                <td><%= plan.title %> </td>
+                                <td>R$ <%= plan.value %> </td>
+                            </tr>    
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+
+</body>
+
+<%- include ("../partials/footer.ejs") %>
